@@ -1,17 +1,20 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import './Navbar.css';
 
-const Navbar = () => (
-  <nav style={{
-    backgroundColor: '#2c3e50',
-    padding: '10px 20px',
-    display: 'flex',
-    gap: '20px'
-  }}>
-    <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
-    <Link to="/acustica" style={{ color: 'white', textDecoration: 'none' }}>Contaminación Acústica</Link>
-    <Link to="/bicicletas" style={{ color: 'white', textDecoration: 'none' }}>Bicicletas</Link>
-    <Link to="/accidentes" style={{ color: 'white', textDecoration: 'none' }}>Accidentes</Link>
-  </nav>
-);
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      <h1>Smart City Monitor</h1>
+      <ul className="nav-links">
+        <li><Link to="/">Inicio</Link></li>
+        <li><Link to="/acustica">Acústica</Link></li>
+        <li><Link to="/bicicletas">Bicicletas</Link></li>
+        <li><Link to="/accidentes">Accidentes</Link></li>
+        <li><Link to="/trafico">Tráfico</Link></li>
+      </ul>
+    </nav>
+  );
+};
 
 export default Navbar;

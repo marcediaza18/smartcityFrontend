@@ -7,22 +7,25 @@ const Home = () => {
   const [stats, setStats] = useState({
     accidentes: 0,
     bicicletas: 0,
-    acustica: 0
+    acustica: 0,
+    trafico: 0
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [a, b, c] = await Promise.all([
+        const [a, b, c, d] = await Promise.all([
           axios.get('http://localhost:4000/api/accidentes'),
           axios.get('http://localhost:4000/api/bicicletas'),
-          axios.get('http://localhost:4000/api/acustica')
+          axios.get('http://localhost:4000/api/acustica'),
+          axios.get('http://localhost:4000/api/trafico')
         ]);
 
         setStats({
           accidentes: a.data.length,
           bicicletas: b.data.length,
-          acustica: new Set(c.data.map(e => e.estacion)).size
+          acustica: new Set(c.data.map(e => e.estacion)).size,
+          trafico: d.data.length
         });
       } catch (err) {
         console.error('Error al obtener estadísticas:', err);
@@ -47,6 +50,7 @@ const Home = () => {
         <li><strong>Accidentes de tráfico</strong> con posibilidad de filtrar por fecha y distrito.</li>
         <li><strong>Uso del sistema de bicicletas</strong> públicas día a día.</li>
         <li><strong>Niveles de contaminación acústica</strong> por estaciones de medición.</li>
+        <li><strong>Medición del tráfico urbano</strong> a través de sensores distribuidos en la ciudad.</li>
       </ul>
 
       <div style={{
@@ -73,6 +77,13 @@ const Home = () => {
           <p style={numStyle}>{stats.acustica}</p>
           <p>Estaciones activas de medición de ruido con análisis de LAeq24.</p>
           <Link to="/acustica" style={linkStyle}>Ver detalles →</Link>
+        </div>
+
+        <div style={cardStyle}>
+          <h3>🚦 Tráfico</h3>
+          <p style={numStyle}>{stats.trafico}</p>
+          <p>Puntos de control con información sobre intensidad y localización del tráfico.</p>
+          <Link to="/trafico" style={linkStyle}>Ver detalles →</Link>
         </div>
       </div>
     </motion.div>

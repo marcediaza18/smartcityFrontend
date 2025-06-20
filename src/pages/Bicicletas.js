@@ -21,9 +21,13 @@ const Bicicletas = () => {
   useEffect(() => {
     axios.get('http://localhost:4000/api/bicicletas')
       .then((res) => {
-        const ordenados = [...res.data].sort((a, b) =>
-          parseFecha(a.dia) - parseFecha(b.dia)
-        );
+        const ordenados = res.data.map((d) => ({
+          ...d,
+          totalUsos: Number(d.totalUsos),
+          usosAnual: Number(d.usosAnual),
+          usosOcasional: Number(d.usosOcasional)
+        })).sort((a, b) => parseFecha(a.dia) - parseFecha(b.dia));
+
         setTodos(ordenados);
         setLoading(false);
       })
@@ -47,7 +51,14 @@ const Bicicletas = () => {
       transition={{ duration: 0.5 }}
       style={{ padding: '20px' }}
     >
-      <h2>Uso de Bicicletas por Día</h2>
+      <h2>Estadísticas de Uso de Bicicletas Públicas</h2>
+
+      <div style={{ background: '#f0f8ff', padding: '15px', borderRadius: '8px', marginBottom: '20px' }}>
+        <p>
+          La siguiente gráfica representa los <strong>usos diarios</strong> del sistema público de bicicletas,
+          incluyendo <strong>abonados anuales</strong> y <strong>ocasionales</strong>. Puedes aplicar un filtro por rango de fechas.
+        </p>
+      </div>
 
       <fieldset style={{
         border: '1px solid #ccc',
@@ -56,21 +67,17 @@ const Bicicletas = () => {
         borderRadius: '8px',
         backgroundColor: '#fafafa'
       }}>
-        <legend><strong>Filtros</strong></legend>
-
+        <legend><strong>Filtros por fecha</strong></legend>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'center' }}>
           <label>
-            Desde:
+            Desde:<br />
             <input type="date" value={desde} onChange={(e) => setDesde(e.target.value)} />
           </label>
           <label>
-            Hasta:
+            Hasta:<br />
             <input type="date" value={hasta} onChange={(e) => setHasta(e.target.value)} />
           </label>
-          <button onClick={() => {
-            setDesde('');
-            setHasta('');
-          }}>
+          <button onClick={() => { setDesde(''); setHasta(''); }}>
             Limpiar filtros
           </button>
         </div>
@@ -79,16 +86,22 @@ const Bicicletas = () => {
       {loading ? (
         <p>Cargando datos...</p>
       ) : (
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart data={filtrados}>
+        <ResponsiveContainer width="100%" height={450}>
+          <LineChart data={filtrados} margin={{ top: 10, right: 30, bottom: 60, left: 20 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="dia" />
-            <YAxis />
+            <XAxis
+              dataKey="dia"
+              angle={-45}
+              textAnchor="end"
+              interval={30}
+              height={70}
+            />
+            <YAxis label={{ value: 'Cantidad de usos', angle: -90, position: 'insideLeft' }} />
             <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="totalUsos" stroke="#8884d8" name="Total Usos" />
-            <Line type="monotone" dataKey="usosAnual" stroke="#82ca9d" name="Usos Anuales" />
-            <Line type="monotone" dataKey="usosOcasional" stroke="#ff7300" name="Usos Ocasionales" />
+            <Legend verticalAlign="top" />
+            <Line type="monotone" dataKey="totalUsos" stroke="#0077b6" name="Total de usos" dot={false} />
+            <Line type="monotone" dataKey="usosAnual" stroke="#43aa8b" name="Usos anuales" dot={false} />
+            <Line type="monotone" dataKey="usosOcasional" stroke="#f8961e" name="Usos ocasionales" dot={false} />
           </LineChart>
         </ResponsiveContainer>
       )}
