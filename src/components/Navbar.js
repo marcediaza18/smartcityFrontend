@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom';
 
 const Navbar = () => (
-  <nav style={{ padding: '10px', background: '#f0f0f0' }}>
-    <Link to="/">Home</Link> |{" "}
-    <Link to="/acustica">Contaminación Acústica</Link> |{" "}
-    <Link to="/bicicletas">Bicicletas</Link> |{" "}
-    <Link to="/accidentes">Accidentes</Link>
+  <nav style={{
+    backgroundColor: '#2c3e50',
+    padding: '10px 20px',
+    display: 'flex',
+    gap: '20px'
+  }}>
+    <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
+    <Link to="/acustica" style={{ color: 'white', textDecoration: 'none' }}>Contaminación Acústica</Link>
+    <Link to="/bicicletas" style={{ color: 'white', textDecoration: 'none' }}>Bicicletas</Link>
+    <Link to="/accidentes" style={{ color: 'white', textDecoration: 'none' }}>Accidentes</Link>
   </nav>
 );
 
