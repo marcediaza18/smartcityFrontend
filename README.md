@@ -1,70 +1,64 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Smart City Dashboard - Frontend
 
-## Available Scripts
+Este proyecto es la interfaz de usuario para la plataforma de monitorización y análisis de datos urbanos de una ciudad inteligente. Se utiliza React para el frontend, con gráficos interactivos proporcionados por Recharts y mapas interactivos con Leaflet.
 
-In the project directory, you can run:
+## Características
 
-### `npm start`
+- Visualización de datos de **Accidentes**, **Bicicletas**, **Contaminación Acústica** y **Tráfico**.
+- Filtros por **fecha** y **distrito** para explorar los datos.
+- Gráficas interactivas con **Recharts**.
+- Mapa interactivo con **Leaflet** para mostrar los puntos de tráfico.
+- Navegación sencilla entre secciones.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Requisitos
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js >= 14
+- npm >= 6.14
 
-### `npm test`
+## Instalación
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clona el repositorio:
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/marcediaza18/extraordinariaFrontend.git
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Navega a la carpeta del proyecto:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   cd extraordinariafrontend
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Instala las dependencias:
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Inicia la aplicación:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+La aplicación estará disponible en `http://localhost:3000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Estructura del Proyecto
 
-## Learn More
+- **/src**: Archivos de código fuente de la aplicación.
+  - **/components**: Componentes reutilizables (por ejemplo, Navbar).
+  - **/pages**: Páginas de la aplicación (por ejemplo, Home, Accidente, Trafico).
+  - **/styles**: Archivos de estilos globales.
+- **/public**: Archivos públicos como el `index.html`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Tecnologías Usadas
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **React**: Librería para crear interfaces de usuario.
+- **Leaflet**: Librería para la visualización de mapas interactivos.
+- **Recharts**: Librería para gráficos interactivos.
+- **Framer Motion**: Para animaciones suaves al cargar las páginas.
 
-### Code Splitting
+## Autor
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Marcelino Díaz
