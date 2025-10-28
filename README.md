@@ -21,13 +21,13 @@ Este proyecto es la interfaz de usuario para la plataforma de monitorización y 
 1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/marcediaza18/extraordinariaFrontend.git
+   git clone https://github.com/marcediaza18/smartcityFrontend.git
    ```
 
 2. Navega a la carpeta del proyecto:
 
    ```bash
-   cd extraordinariafrontend
+   cd smartcityFrontend
    ```
 
 3. Instala las dependencias:
